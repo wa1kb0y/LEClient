@@ -84,7 +84,9 @@ class LEFunctions
 		file_put_contents($privateKeyFile, $privateKey);
 		file_put_contents($publicKeyFile, $details['key']);
 
-		openssl_pkey_free($res);
+		if (version_compare(PHP_VERSION, '8.0', '<')) {
+			openssl_pkey_free($res);
+		}
 	}
 
     /**
@@ -129,7 +131,9 @@ class LEFunctions
 		file_put_contents($privateKeyFile, $privateKey);
 		file_put_contents($publicKeyFile, $details['key']);
 
-		openssl_pkey_free($res);
+		if (version_compare(PHP_VERSION, '8.0', '<')) {
+			openssl_pkey_free($res);
+		}
 	}
 
 
